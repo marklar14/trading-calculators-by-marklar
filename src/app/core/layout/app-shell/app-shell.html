@@ -1,0 +1,26 @@
+<div class="app-shell">
+  <p-toolbar class="app-topbar">
+    <ng-template #start>
+      <div class="app-brand">
+        <span class="app-brand__mark">
+          <i class="pi pi-chart-line"></i>
+        </span>
+
+        <div class="app-brand__text">
+          <strong>{{ 'app.name' | transloco }}</strong>
+          <small>{{ 'app.tagline' | transloco }}</small>
+        </div>
+      </div>
+    </ng-template>
+  </p-toolbar>
+
+  <div class="app-body">
+    <aside class="app-sidebar">
+      <app-menu></app-menu>
+    </aside>
+
+    <main class="app-main">
+      <router-outlet />
+    </main>
+  </div>
+</div>

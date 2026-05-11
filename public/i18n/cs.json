@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Trading kalkulačky",
+    "tagline": "Risk management workspace",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "calculators": "Kalkulačky",
+      "settings": "Nastavení"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Pracovní plocha pro trading kalkulačky",
+    "status": "Základní verze",
+    "cards": {
+      "account": {
+        "title": "Account snapshot",
+        "subtitle": "Výchozí hodnoty pro risk management"
+      },
+      "positionSize": {
+        "title": "Position size",
+        "subtitle": "Rychlý odhad velikosti pozice"
+      },
+      "riskReward": {
+        "title": "Risk / Reward",
+        "subtitle": "Poměr rizika a potenciálního zisku"
+      },
+      "profitLoss": {
+        "title": "Profit / Loss",
+        "subtitle": "Náhled výsledku obchodu"
+      },
+      "recent": {
+        "title": "Recent scenarios",
+        "subtitle": "Poslední uložené výpočty"
+      }
+    },
+    "metrics": {
+      "balance": "Balance",
+      "risk": "Risk per trade",
+      "currency": "Currency"
+    }
+  }
+}
