@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Trading calculators",
+    "tagline": "Risk management workspace",
+    "navigation": {
+      "dashboard": "Dashboard",
+      "calculators": "Calculators",
+      "settings": "Settings"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Trading calculators workspace",
+    "status": "Basic version",
+    "cards": {
+      "account": {
+        "title": "Account snapshot",
+        "subtitle": "Default values for risk management"
+      },
+      "positionSize": {
+        "title": "Position size",
+        "subtitle": "Quick estimate of position size"
+      },
+      "riskReward": {
+        "title": "Risk / Reward",
+        "subtitle": "Risk and potential reward ratio"
+      },
+      "profitLoss": {
+        "title": "Profit / Loss",
+        "subtitle": "Trade outcome preview"
+      },
+      "recent": {
+        "title": "Recent scenarios",
+        "subtitle": "Latest saved calculations"
+      }
+    },
+    "metrics": {
+      "balance": "Balance",
+      "risk": "Risk per trade",
+      "currency": "Currency"
+    }
+  }
+}

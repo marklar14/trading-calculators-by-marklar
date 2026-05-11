@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.app-nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.app-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--p-primary-900);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.app-nav__link:hover {
+  background: var(--p-primary-100);
+  color: var(--p-primary-700);
+}
+
+.app-nav__link--active {
+  background: var(--p-primary-50);
+  color: var(--p-primary-700);
+}
+
+.app-nav__link--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (max-width: 48rem) {
+  .app-nav {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+  }
+}
