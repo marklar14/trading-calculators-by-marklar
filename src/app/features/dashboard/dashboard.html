@@ -7,6 +7,9 @@
   </header>
 
   <div class="dashboard__calculators">
-    <app-position-size-calculator [showHeader]="false" [compact]="true" />
+    <section class="dashboard__calculator">
+      <h2>{{ 'positionSize.title' | transloco }}</h2>
+      <app-position-size-calculator [showHeader]="false" [compact]="true" />
+    </section>
   </div>
 </section>

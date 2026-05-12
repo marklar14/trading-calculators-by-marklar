@@ -31,6 +31,10 @@ describe('PositionSizeCalculator', () => {
       entry: 153.52,
       stopLoss: 150.52,
       riskAmount: 15,
+      side: 'LONG',
+      units: 'QUANTITY',
+      percentage: 0,
+      account: 0,
     });
 
     expect(calculator.positionSize()).toBe(5);
@@ -46,6 +50,10 @@ describe('PositionSizeCalculator', () => {
       entry: 100,
       stopLoss: 100,
       riskAmount: 10,
+      side: 'LONG',
+      units: 'QUANTITY',
+      percentage: 0,
+      account: 0,
     });
 
     expect(calculator.isCalculatorValid()).toBe(false);

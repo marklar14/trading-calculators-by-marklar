@@ -14,6 +14,10 @@ describe('PositionSizeCalculatorService', () => {
       entry: 153.52,
       stopLoss: 150.52,
       riskAmount: 15,
+      side: 'LONG',
+      units: 'QUANTITY',
+      percentage: 0,
+      account: 0,
     });
 
     expect(result).toBe(5);
@@ -24,6 +28,10 @@ describe('PositionSizeCalculatorService', () => {
       entry: 82_000,
       stopLoss: 80_000,
       riskAmount: 10,
+      side: 'LONG',
+      units: 'QUANTITY',
+      percentage: 0,
+      account: 0,
     });
 
     expect(result).toBe(0);
@@ -34,6 +42,10 @@ describe('PositionSizeCalculatorService', () => {
       entry: 150.52,
       stopLoss: 153.52,
       riskAmount: 15,
+      side: 'SHORT',
+      units: 'QUANTITY',
+      percentage: 0,
+      account: 0,
     });
 
     expect(result).toBe(5);

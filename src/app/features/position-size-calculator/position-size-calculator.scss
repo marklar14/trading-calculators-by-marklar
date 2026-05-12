@@ -38,35 +38,38 @@
 }
 
 .position-size-calculator p-card label + label {
-  margin-top: 1.25rem;
+  margin-top: 0rem;
 }
 
-:host ::ng-deep .position-size-calculator__input-control {
-  width: 100%;
+.position-size-calculator__choice-group {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-:host ::ng-deep .position-size-calculator__input {
-  width: 100%;
-  min-height: 2.75rem;
-  border: 1px solid var(--p-content-border-color);
-  border-radius: 0.5rem;
-  background: var(--p-surface-0);
-  color: var(--p-surface-950);
-  caret-color: var(--p-primary-600);
-  padding: 0.625rem 0.75rem;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+.position-size-calculator__choice-group legend {
+  padding: 0;
+  font-weight: 600;
 }
 
-:host ::ng-deep .position-size-calculator__input::placeholder {
-  color: var(--p-surface-500);
+.position-size-calculator__choice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
 }
 
-:host ::ng-deep .position-size-calculator__input:focus {
-  border-color: var(--p-primary-500);
-  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--p-primary-500) 20%, transparent);
-  outline: 0;
+.position-size-calculator__choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.position-size-calculator__choice label {
+  display: inline;
+  font-weight: 500;
 }
 
 .position-size-calculator__result-card {
