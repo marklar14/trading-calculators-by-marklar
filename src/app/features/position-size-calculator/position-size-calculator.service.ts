@@ -5,6 +5,10 @@ import { PositionSizeCalculatorModel } from './position-size-calculator.model';
 @Injectable({ providedIn: 'root' })
 export class PositionSizeCalculatorService implements Calculator<PositionSizeCalculatorModel> {
   calculate(inputs: PositionSizeCalculatorModel): number {
-    return Math.floor(inputs.riskAmount / Math.abs(inputs.entry - inputs.stopLoss));
+    let riskAmount = inputs.riskAmount;
+    if (inputs.units === 'PERCENTAGE') {
+      riskAmount = inputs.account * (inputs.percentage / 100);
+    }
+    return Math.floor(riskAmount / Math.abs(inputs.entry - inputs.stopLoss));
   }
 }

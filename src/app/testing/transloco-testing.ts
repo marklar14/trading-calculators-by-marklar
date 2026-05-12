@@ -36,6 +36,18 @@ export const translocoTestingModule = TranslocoTestingModule.forRoot({
           entry: 'Entry cena',
           stopLoss: 'Stop loss',
           riskAmount: 'Risk částka',
+          side: 'Směr',
+          units: 'Jednotky risku',
+          account: 'Velikost účtu',
+          percentage: 'Risk procento',
+        },
+        side: {
+          long: 'Long',
+          short: 'Short',
+        },
+        units: {
+          quantity: 'Pevná částka',
+          percentage: 'Procento',
         },
         result: {
           title: 'Výsledek',

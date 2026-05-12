@@ -28,6 +28,17 @@
   align-items: start;
 }
 
+.dashboard__calculator {
+  display: grid;
+  gap: 1rem;
+}
+
+.dashboard__calculator h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
 .metric-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

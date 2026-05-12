@@ -1,9 +1,12 @@
-<section class="position-size-calculator grid gap-6" [class.position-size-calculator--compact]="compact">
-  @if (showHeader) {
-    <header class="position-size-calculator__header">
-      <h1 class="m-0 text-3xl leading-tight">{{ 'positionSize.title' | transloco }}</h1>
-      <p class="mt-2 mb-0">{{ 'positionSize.subtitle' | transloco }}</p>
-    </header>
+<section
+  class="position-size-calculator grid gap-6"
+  [class.position-size-calculator--compact]="compact()"
+>
+  @if (showHeader()) {
+  <header class="position-size-calculator__header">
+    <h1 class="m-0 text-3xl leading-tight">{{ 'positionSize.title' | transloco }}</h1>
+    <p class="mt-2 mb-0">{{ 'positionSize.subtitle' | transloco }}</p>
+  </header>
   }
 
   <form class="position-size-calculator__grid grid gap-4" [formGroup]="calculatorForm">
@@ -11,6 +14,27 @@
       <ng-template #title>{{ 'positionSize.inputs.title' | transloco }}</ng-template>
 
       <div class="grid gap-4">
+        <fieldset class="position-size-calculator__choice-group">
+          <legend>{{ 'positionSize.fields.side' | transloco }}</legend>
+
+          <div class="position-size-calculator__choice-list">
+            <div class="position-size-calculator__choice pt-2">
+              <p-radiobutton inputId="side-long" formControlName="side" name="side" value="LONG" />
+              <label for="side-long">{{ 'positionSize.side.long' | transloco }}</label>
+            </div>
+
+            <div class="position-size-calculator__choice pt-2">
+              <p-radiobutton
+                inputId="side-short"
+                formControlName="side"
+                name="side"
+                value="SHORT"
+              />
+              <label for="side-short">{{ 'positionSize.side.short' | transloco }}</label>
+            </div>
+          </div>
+        </fieldset>
+
         <label class="grid gap-2 font-semibold" for="entry">
           <span>{{ 'positionSize.fields.entry' | transloco }}</span>
           <p-inputnumber
@@ -21,8 +45,8 @@
             [maxFractionDigits]="4"
             [min]="0"
             placeholder="153.52"
-            styleClass="position-size-calculator__input-control"
-            inputStyleClass="position-size-calculator__input"
+            styleClass="w-full"
+            [inputStyleClass]="inputStyleClass"
           />
         </label>
 
@@ -36,11 +60,70 @@
             [maxFractionDigits]="4"
             [min]="0"
             placeholder="150.52"
-            styleClass="position-size-calculator__input-control"
-            inputStyleClass="position-size-calculator__input"
+            styleClass="w-full"
+            [inputStyleClass]="inputStyleClass"
           />
         </label>
 
+        <fieldset class="position-size-calculator__choice-group">
+          <legend>{{ 'positionSize.fields.units' | transloco }}</legend>
+
+          <div class="position-size-calculator__choice-list">
+            <div class="position-size-calculator__choice pt-2">
+              <p-radiobutton
+                inputId="units-quantity"
+                formControlName="units"
+                name="units"
+                value="QUANTITY"
+              />
+              <label for="units-quantity">{{ 'positionSize.units.quantity' | transloco }}</label>
+            </div>
+
+            <div class="position-size-calculator__choice pt-2">
+              <p-radiobutton
+                inputId="units-percentage"
+                formControlName="units"
+                name="units"
+                value="PERCENTAGE"
+              />
+              <label for="units-percentage"
+                >{{ 'positionSize.units.percentage' | transloco }}</label
+              >
+            </div>
+          </div>
+        </fieldset>
+
+        @if (calculatorForm.controls.units.value === 'PERCENTAGE') {
+        <label class="grid gap-2 font-semibold" for="account">
+          <span>{{ 'positionSize.fields.account' | transloco }}</span>
+          <p-inputnumber
+            inputId="account"
+            formControlName="account"
+            mode="currency"
+            currency="USD"
+            locale="en-US"
+            [min]="0"
+            placeholder="$10,000.00"
+            styleClass="w-full"
+            [inputStyleClass]="inputStyleClass"
+          />
+        </label>
+
+        <label class="grid gap-2 font-semibold" for="percentage">
+          <span>{{ 'positionSize.fields.percentage' | transloco }}</span>
+          <p-inputnumber
+            inputId="percentage"
+            formControlName="percentage"
+            suffix="%"
+            [minFractionDigits]="0"
+            [maxFractionDigits]="2"
+            [min]="0"
+            placeholder="1"
+            styleClass="w-full"
+            [inputStyleClass]="inputStyleClass"
+          />
+        </label>
+        } @else {
         <label class="grid gap-2 font-semibold" for="risk-amount">
           <span>{{ 'positionSize.fields.riskAmount' | transloco }}</span>
           <p-inputnumber
@@ -51,10 +134,11 @@
             locale="en-US"
             [min]="0"
             placeholder="$15.00"
-            styleClass="position-size-calculator__input-control"
-            inputStyleClass="position-size-calculator__input"
+            styleClass="w-full"
+            [inputStyleClass]="inputStyleClass"
           />
         </label>
+        }
       </div>
     </p-card>
 
@@ -62,17 +146,17 @@
       <ng-template #title>{{ 'positionSize.result.title' | transloco }}</ng-template>
 
       @if (!isCalculatorValid()) {
-        <p-message severity="warn" [text]="'positionSize.validation.invalidInputs' | transloco" />
+      <p-message severity="warn" [text]="'positionSize.validation.invalidInputs' | transloco" />
       } @else if (positionSize() === 0) {
-        <div class="position-size-calculator__result grid min-h-48 content-center gap-3 text-center">
-          <p-message severity="warn" [text]="'positionSize.validation.tooSmallRisk' | transloco" />
-        </div>
+      <div class="position-size-calculator__result grid min-h-48 content-center gap-3 text-center">
+        <p-message severity="warn" [text]="'positionSize.validation.tooSmallRisk' | transloco" />
+      </div>
       } @else {
-        <div class="position-size-calculator__result grid min-h-48 content-center gap-1 text-center">
-          <span>{{ 'positionSize.result.quantity' | transloco }}</span>
-          <strong class="text-5xl leading-none">{{ positionSize() | number: '1.0-0' }}</strong>
-          <small>{{ 'positionSize.result.units' | transloco }}</small>
-        </div>
+      <div class="position-size-calculator__result grid min-h-48 content-center gap-1 text-center">
+        <span>{{ 'positionSize.result.quantity' | transloco }}</span>
+        <strong class="text-5xl leading-none">{{ positionSize() | number: '1.0-0' }}</strong>
+        <small>{{ 'positionSize.result.units' | transloco }}</small>
+      </div>
       }
     </p-card>
   </form>

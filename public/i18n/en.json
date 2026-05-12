@@ -54,7 +54,19 @@
     "fields": {
       "entry": "Entry price",
       "stopLoss": "Stop loss",
-      "riskAmount": "Risk amount"
+      "riskAmount": "Risk amount",
+      "side": "Side",
+      "units": "Risk units",
+      "account": "Account size",
+      "percentage": "Risk percentage"
+    },
+    "side": {
+      "long": "Long",
+      "short": "Short"
+    },
+    "units": {
+      "quantity": "Fixed amount",
+      "percentage": "Percentage"
     },
     "result": {
       "title": "Result",
