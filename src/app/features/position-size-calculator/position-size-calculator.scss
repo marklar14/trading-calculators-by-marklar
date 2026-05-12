@@ -1,0 +1,104 @@
+.position-size-calculator {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.position-size-calculator__header h1 {
+  margin: 0;
+  font-size: 1.875rem;
+  line-height: 1.25;
+}
+
+.position-size-calculator__header p {
+  margin: 0.5rem 0 0;
+  color: var(--p-text-muted-color);
+}
+
+.position-size-calculator__grid {
+  display: grid;
+  grid-template-columns: minmax(24rem, 38rem) minmax(18rem, 22rem);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.position-size-calculator--compact {
+  max-width: none;
+}
+
+.position-size-calculator--compact .position-size-calculator__grid {
+  grid-template-columns: 1fr;
+}
+
+.position-size-calculator label {
+  display: grid;
+  gap: 0.625rem;
+  font-weight: 600;
+}
+
+.position-size-calculator p-card label + label {
+  margin-top: 1.25rem;
+}
+
+:host ::ng-deep .position-size-calculator__input-control {
+  width: 100%;
+}
+
+:host ::ng-deep .position-size-calculator__input {
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 0.5rem;
+  background: var(--p-surface-0);
+  color: var(--p-surface-950);
+  caret-color: var(--p-primary-600);
+  padding: 0.625rem 0.75rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+:host ::ng-deep .position-size-calculator__input::placeholder {
+  color: var(--p-surface-500);
+}
+
+:host ::ng-deep .position-size-calculator__input:focus {
+  border-color: var(--p-primary-500);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--p-primary-500) 20%, transparent);
+  outline: 0;
+}
+
+.position-size-calculator__result-card {
+  height: 100%;
+}
+
+.position-size-calculator__result {
+  display: grid;
+  min-height: 12rem;
+  align-content: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.position-size-calculator__result span,
+.position-size-calculator__result small {
+  display: block;
+  color: var(--p-text-muted-color);
+}
+
+.position-size-calculator__result strong {
+  color: var(--p-primary-600);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+@media (max-width: 48rem) {
+  .position-size-calculator {
+    max-width: none;
+  }
+
+  .position-size-calculator__grid {
+    grid-template-columns: 1fr;
+  }
+}

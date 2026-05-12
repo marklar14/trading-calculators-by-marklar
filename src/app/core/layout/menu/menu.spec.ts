@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Menu } from './menu';
+import { translocoTestingModule } from '../../../testing/transloco-testing';
 
 describe('Menu', () => {
   let component: Menu;
@@ -8,7 +10,8 @@ describe('Menu', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Menu],
+      imports: [Menu, translocoTestingModule],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Menu);

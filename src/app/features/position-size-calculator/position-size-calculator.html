@@ -1,0 +1,79 @@
+<section class="position-size-calculator grid gap-6" [class.position-size-calculator--compact]="compact">
+  @if (showHeader) {
+    <header class="position-size-calculator__header">
+      <h1 class="m-0 text-3xl leading-tight">{{ 'positionSize.title' | transloco }}</h1>
+      <p class="mt-2 mb-0">{{ 'positionSize.subtitle' | transloco }}</p>
+    </header>
+  }
+
+  <form class="position-size-calculator__grid grid gap-4" [formGroup]="calculatorForm">
+    <p-card styleClass="position-size-calculator__card">
+      <ng-template #title>{{ 'positionSize.inputs.title' | transloco }}</ng-template>
+
+      <div class="grid gap-4">
+        <label class="grid gap-2 font-semibold" for="entry">
+          <span>{{ 'positionSize.fields.entry' | transloco }}</span>
+          <p-inputnumber
+            inputId="entry"
+            formControlName="entry"
+            mode="decimal"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="4"
+            [min]="0"
+            placeholder="153.52"
+            styleClass="position-size-calculator__input-control"
+            inputStyleClass="position-size-calculator__input"
+          />
+        </label>
+
+        <label class="grid gap-2 font-semibold" for="stop-loss">
+          <span>{{ 'positionSize.fields.stopLoss' | transloco }}</span>
+          <p-inputnumber
+            inputId="stop-loss"
+            formControlName="stopLoss"
+            mode="decimal"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="4"
+            [min]="0"
+            placeholder="150.52"
+            styleClass="position-size-calculator__input-control"
+            inputStyleClass="position-size-calculator__input"
+          />
+        </label>
+
+        <label class="grid gap-2 font-semibold" for="risk-amount">
+          <span>{{ 'positionSize.fields.riskAmount' | transloco }}</span>
+          <p-inputnumber
+            inputId="risk-amount"
+            formControlName="riskAmount"
+            mode="currency"
+            currency="USD"
+            locale="en-US"
+            [min]="0"
+            placeholder="$15.00"
+            styleClass="position-size-calculator__input-control"
+            inputStyleClass="position-size-calculator__input"
+          />
+        </label>
+      </div>
+    </p-card>
+
+    <p-card styleClass="position-size-calculator__card position-size-calculator__result-card">
+      <ng-template #title>{{ 'positionSize.result.title' | transloco }}</ng-template>
+
+      @if (!isCalculatorValid()) {
+        <p-message severity="warn" [text]="'positionSize.validation.invalidInputs' | transloco" />
+      } @else if (positionSize() === 0) {
+        <div class="position-size-calculator__result grid min-h-48 content-center gap-3 text-center">
+          <p-message severity="warn" [text]="'positionSize.validation.tooSmallRisk' | transloco" />
+        </div>
+      } @else {
+        <div class="position-size-calculator__result grid min-h-48 content-center gap-1 text-center">
+          <span>{{ 'positionSize.result.quantity' | transloco }}</span>
+          <strong class="text-5xl leading-none">{{ positionSize() | number: '1.0-0' }}</strong>
+          <small>{{ 'positionSize.result.units' | transloco }}</small>
+        </div>
+      }
+    </p-card>
+  </form>
+</section>

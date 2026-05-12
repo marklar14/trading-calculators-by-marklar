@@ -5,6 +5,7 @@
     "navigation": {
       "dashboard": "Dashboard",
       "calculators": "Kalkulačky",
+      "positionSize": "Velikost pozice",
       "settings": "Nastavení"
     }
   },
@@ -19,7 +20,8 @@
       },
       "positionSize": {
         "title": "Position size",
-        "subtitle": "Rychlý odhad velikosti pozice"
+        "subtitle": "Rychlý odhad velikosti pozice",
+        "action": "Otevřít kalkulačku"
       },
       "riskReward": {
         "title": "Risk / Reward",
@@ -34,10 +36,35 @@
         "subtitle": "Poslední uložené výpočty"
       }
     },
+    "calculators": {
+      "title": "Kalkulačky"
+    },
     "metrics": {
       "balance": "Balance",
       "risk": "Risk per trade",
       "currency": "Currency"
+    }
+  },
+  "positionSize": {
+    "title": "Velikost pozice",
+    "subtitle": "Spočítá velikost pozice podle vstupu, stop-lossu a risku.",
+    "inputs": {
+      "title": "Vstupy"
+    },
+    "fields": {
+      "entry": "Entry cena",
+      "stopLoss": "Stop loss",
+      "riskAmount": "Risk částka"
+    },
+    "result": {
+      "title": "Výsledek",
+      "exactQuantity": "Přesné množství",
+      "quantity": "Quantity",
+      "units": "kusů"
+    },
+    "validation": {
+      "invalidInputs": "Zadej platné hodnoty větší než nula. Entry a stop loss nesmí být stejné.",
+      "tooSmallRisk": "Risk je příliš malý na jeden celý kus."
     }
   }
 }

@@ -11,6 +11,13 @@ export const routes: Routes = [
         loadComponent: () => import('./features/dashboard/dashboard').then((m) => m.Dashboard),
       },
       {
+        path: 'position-size',
+        loadComponent: () =>
+          import('./features/position-size-calculator/position-size-calculator').then(
+            (m) => m.PositionSizeCalculator,
+          ),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'dashboard',
