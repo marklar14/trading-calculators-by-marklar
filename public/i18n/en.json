@@ -5,6 +5,7 @@
     "navigation": {
       "dashboard": "Dashboard",
       "calculators": "Calculators",
+      "positionSize": "Position size",
       "settings": "Settings"
     }
   },
@@ -19,7 +20,8 @@
       },
       "positionSize": {
         "title": "Position size",
-        "subtitle": "Quick estimate of position size"
+        "subtitle": "Quick estimate of position size",
+        "action": "Open calculator"
       },
       "riskReward": {
         "title": "Risk / Reward",
@@ -34,10 +36,35 @@
         "subtitle": "Latest saved calculations"
       }
     },
+    "calculators": {
+      "title": "Calculators"
+    },
     "metrics": {
       "balance": "Balance",
       "risk": "Risk per trade",
       "currency": "Currency"
+    }
+  },
+  "positionSize": {
+    "title": "Position size",
+    "subtitle": "Calculate position size from entry, stop-loss and risk.",
+    "inputs": {
+      "title": "Inputs"
+    },
+    "fields": {
+      "entry": "Entry price",
+      "stopLoss": "Stop loss",
+      "riskAmount": "Risk amount"
+    },
+    "result": {
+      "title": "Result",
+      "exactQuantity": "Exact quantity",
+      "quantity": "Quantity",
+      "units": "shares"
+    },
+    "validation": {
+      "invalidInputs": "Enter valid values greater than zero. Entry and stop loss cannot be the same.",
+      "tooSmallRisk": "Risk is too small for one whole unit."
     }
   }
 }

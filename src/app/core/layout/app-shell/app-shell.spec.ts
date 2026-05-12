@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { AppShell } from './app-shell';
+import { translocoTestingModule } from '../../../testing/transloco-testing';
 
 describe('AppShell', () => {
   let component: AppShell;
@@ -8,7 +10,8 @@ describe('AppShell', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppShell],
+      imports: [AppShell, translocoTestingModule],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppShell);

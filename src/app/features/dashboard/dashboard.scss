@@ -21,18 +21,11 @@
   color: var(--p-text-color);
 }
 
-.dashboard__grid {
+.dashboard__calculators {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-}
-
-.dashboard-card {
-  display: block;
-}
-
-.dashboard-card--wide {
-  grid-column: 1 / -1;
+  align-items: start;
 }
 
 .metric-row {
@@ -89,7 +82,7 @@
     display: grid;
   }
 
-  .dashboard__grid,
+  .dashboard__calculators,
   .metric-row {
     grid-template-columns: 1fr;
   }

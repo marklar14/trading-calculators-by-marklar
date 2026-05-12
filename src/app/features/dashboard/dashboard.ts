@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { CardModule } from 'primeng/card';
-import { TagModule } from 'primeng/tag';
+import { PositionSizeCalculator } from '../position-size-calculator/position-size-calculator';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [TranslocoPipe, CardModule, TagModule],
+  imports: [TranslocoPipe, PositionSizeCalculator],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
