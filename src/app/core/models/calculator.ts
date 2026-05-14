@@ -1,3 +1,3 @@
-export interface Calculator<TInput> {
-  calculate(inputs: TInput): number;
+export interface Calculator<TInput, TResult> {
+  calculate(inputs: TInput): TResult;
 }

@@ -1,5 +1,5 @@
-import { DecimalPipe } from '@angular/common';
-import { Component, Input, inject, input } from '@angular/core';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { Component, inject, input } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { CardModule } from 'primeng/card';
@@ -7,7 +7,11 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { MessageModule } from 'primeng/message';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { PositionSizeCalculatorService } from './position-size-calculator.service';
-import { PositionSizeCalculatorForm } from './position-size-calculator.model';
+import {
+  PositionSizeCalculatorForm,
+  PositionSizeCalculatorResult,
+  RiskRewardRating,
+} from './position-size-calculator.model';
 import {
   conditionalRequiredAccountValidator,
   conditionalRequiredRiskAmountValidator,
@@ -20,6 +24,7 @@ import { Units } from '../../shared/models/units';
   selector: 'app-position-size-calculator',
   imports: [
     DecimalPipe,
+    CurrencyPipe,
     TranslocoPipe,
     ReactiveFormsModule,
     CardModule,
@@ -49,6 +54,7 @@ export class PositionSizeCalculator {
       units: ['QUANTITY' as Units, [Validators.required]],
       percentage: [0],
       account: [0],
+      takeProfit: [0],
     },
     {
       validators: [
@@ -64,10 +70,36 @@ export class PositionSizeCalculator {
   }
 
   protected positionSize(): number {
+    return this.calculatorResult().quantity;
+  }
+
+  protected positionValue(): number {
+    return this.calculatorResult().positionValue;
+  }
+
+  protected calculatorResult(): PositionSizeCalculatorResult {
     if (!this.isCalculatorValid()) {
-      return 0;
+      return {
+        quantity: 0,
+        positionValue: 0,
+        leverageOptions: [],
+      };
     }
 
     return this.calculatorService.calculate(this.calculatorForm.getRawValue());
+  }
+
+  protected riskRewardRatingClass(rating: RiskRewardRating): string {
+    const baseClass = 'rounded-full px-3 py-1 text-xs font-bold uppercase tracking-normal';
+
+    const ratingClass: Record<RiskRewardRating, string> = {
+      POOR: 'bg-red-500/20 text-red-200 ring-1 ring-red-400/50',
+      MINIMUM: 'bg-amber-500/20 text-amber-100 ring-1 ring-amber-400/50',
+      OK: 'bg-sky-500/20 text-sky-100 ring-1 ring-sky-400/50',
+      GOOD: 'bg-emerald-500/20 text-emerald-100 ring-1 ring-emerald-400/50',
+      IDEAL: 'bg-cyan-500/20 text-cyan-100 ring-1 ring-cyan-300/60',
+    };
+
+    return `${baseClass} ${ratingClass[rating]}`;
   }
 }
