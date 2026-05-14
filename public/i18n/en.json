@@ -58,7 +58,8 @@
       "side": "Side",
       "units": "Risk units",
       "account": "Account size",
-      "percentage": "Risk percentage"
+      "percentage": "Risk percentage",
+      "takeProfit": "Take profit price (optional)"
     },
     "side": {
       "long": "Long",
@@ -72,7 +73,23 @@
       "title": "Result",
       "exactQuantity": "Exact quantity",
       "quantity": "Quantity",
-      "units": "shares"
+      "units": "shares",
+      "positionValue": "Position value",
+      "riskReward": "Risk / Reward",
+      "potentialProfit": "Potential profit",
+      "rating": "Rating",
+      "feesHint": "Potential profit is shown before fees. Broker or exchange fees can lower the final result.",
+      "leverageMargin": "Margin by leverage",
+      "leverageHint": "Leverage does not change the stop-loss risk calculation. It only changes the required margin."
+    },
+    "riskReward": {
+      "rating": {
+        "POOR": "Poor",
+        "MINIMUM": "Minimum",
+        "OK": "Usable",
+        "GOOD": "Good",
+        "IDEAL": "Ideal"
+      }
     },
     "validation": {
       "invalidInputs": "Enter valid values greater than zero. Entry and stop loss cannot be the same.",

@@ -40,6 +40,7 @@ export const translocoTestingModule = TranslocoTestingModule.forRoot({
           units: 'Jednotky risku',
           account: 'Velikost účtu',
           percentage: 'Risk procento',
+          takeProfit: 'Take profit cena (volitelné)',
         },
         side: {
           long: 'Long',
@@ -53,6 +54,24 @@ export const translocoTestingModule = TranslocoTestingModule.forRoot({
           title: 'Výsledek',
           quantity: 'Quantity',
           units: 'kusů',
+          positionValue: 'Hodnota pozice',
+          riskReward: 'Risk / Reward',
+          potentialProfit: 'Potenciální zisk',
+          rating: 'Hodnocení',
+          feesHint:
+            'Potenciální zisk je bez fees. Poplatky brokera nebo burzy mohou finální výsledek snížit.',
+          leverageMargin: 'Margin podle leverage',
+          leverageHint:
+            'Leverage nemění výpočet risku na stop-lossu. Mění jen potřebný margin.',
+        },
+        riskReward: {
+          rating: {
+            POOR: 'Špatné',
+            MINIMUM: 'Minimum',
+            OK: 'Použitelné',
+            GOOD: 'Dobré',
+            IDEAL: 'Ideální',
+          },
         },
         validation: {
           invalidInputs: 'Zadej platné hodnoty větší než nula.',

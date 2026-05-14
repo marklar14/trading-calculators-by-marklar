@@ -139,6 +139,21 @@
           />
         </label>
         }
+
+        <label class="grid gap-2 font-semibold" for="take-profit">
+          <span>{{ 'positionSize.fields.takeProfit' | transloco }}</span>
+          <p-inputnumber
+            inputId="take-profit"
+            formControlName="takeProfit"
+            mode="decimal"
+            [minFractionDigits]="2"
+            [maxFractionDigits]="4"
+            [min]="0"
+            placeholder="2.18"
+            styleClass="w-full"
+            [inputStyleClass]="inputStyleClass"
+          />
+        </label>
       </div>
     </p-card>
 
@@ -156,6 +171,60 @@
         <span>{{ 'positionSize.result.quantity' | transloco }}</span>
         <strong class="text-5xl leading-none">{{ positionSize() | number: '1.0-0' }}</strong>
         <small>{{ 'positionSize.result.units' | transloco }}</small>
+        <dl class="mt-6 grid gap-2 text-left">
+          <div class="flex items-center justify-between gap-4 rounded-lg bg-black/20 px-4 py-3">
+            <dt class="text-sm text-white/70">{{ 'positionSize.result.positionValue' | transloco }}</dt>
+            <dd class="m-0 font-semibold">
+              {{ positionValue() | currency: 'USD' : 'symbol' : '1.2-2' }}
+            </dd>
+          </div>
+
+          <div class="rounded-lg bg-black/20 px-4 py-3">
+            <dt class="text-sm text-white/70">
+              {{ 'positionSize.result.leverageMargin' | transloco }}
+            </dt>
+            <dd class="m-0 mt-3 grid grid-cols-2 gap-2">
+              @for (option of calculatorResult().leverageOptions; track option.leverage) {
+              <div class="flex items-center justify-between gap-3 rounded-md bg-white/5 px-3 py-2">
+                <span class="text-sm font-semibold">{{ option.leverage }}x</span>
+                <span class="text-sm">
+                  {{ option.requiredMargin | currency: 'USD' : 'symbol' : '1.2-2' }}
+                </span>
+              </div>
+              }
+            </dd>
+            <p class="m-0 mt-3 text-xs text-white/55">
+              {{ 'positionSize.result.leverageHint' | transloco }}
+            </p>
+          </div>
+
+          @if (calculatorResult().riskReward; as riskReward) {
+          <div class="flex items-center justify-between gap-4 rounded-lg bg-black/20 px-4 py-3">
+            <dt class="text-sm text-white/70">{{ 'positionSize.result.riskReward' | transloco }}</dt>
+            <dd class="m-0 font-semibold">
+              1:{{ riskReward.ratio | number: '1.2-2' }}
+            </dd>
+          </div>
+
+          <div class="flex items-center justify-between gap-4 rounded-lg bg-black/20 px-4 py-3">
+            <dt class="text-sm text-white/70">{{ 'positionSize.result.potentialProfit' | transloco }}</dt>
+            <dd class="m-0 font-semibold">
+              {{ riskReward.potentialProfit | currency: 'USD' : 'symbol' : '1.2-2' }}
+            </dd>
+          </div>
+
+          <div class="flex items-center justify-between gap-4 rounded-lg bg-black/20 px-4 py-3">
+            <dt class="text-sm text-white/70">{{ 'positionSize.result.rating' | transloco }}</dt>
+            <dd class="m-0" [class]="riskRewardRatingClass(riskReward.rating)">
+              {{ 'positionSize.riskReward.rating.' + riskReward.rating | transloco }}
+            </dd>
+          </div>
+
+          <p class="m-0 pt-1 text-xs text-white/55">
+            {{ 'positionSize.result.feesHint' | transloco }}
+          </p>
+          }
+        </dl>
       </div>
       }
     </p-card>

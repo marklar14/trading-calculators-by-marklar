@@ -10,6 +10,7 @@ export interface PositionSizeCalculatorModel {
   units: Units;
   percentage: number;
   account: number;
+  takeProfit: number;
 }
 
 export type PositionSizeCalculatorForm = FormGroup<{
@@ -20,4 +21,25 @@ export type PositionSizeCalculatorForm = FormGroup<{
   units: FormControl<Units>;
   percentage: FormControl<number>;
   account: FormControl<number>;
+  takeProfit: FormControl<number>;
 }>;
+
+export type RiskRewardRating = 'POOR' | 'MINIMUM' | 'OK' | 'GOOD' | 'IDEAL';
+
+export interface PositionSizeRiskRewardResult {
+  ratio: number;
+  potentialProfit: number;
+  rating: RiskRewardRating;
+}
+
+export interface PositionSizeLeverageOption {
+  leverage: number;
+  requiredMargin: number;
+}
+
+export interface PositionSizeCalculatorResult {
+  quantity: number;
+  positionValue: number;
+  leverageOptions: PositionSizeLeverageOption[];
+  riskReward?: PositionSizeRiskRewardResult;
+}

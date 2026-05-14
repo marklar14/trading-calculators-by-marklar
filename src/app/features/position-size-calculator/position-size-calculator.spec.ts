@@ -35,6 +35,7 @@ describe('PositionSizeCalculator', () => {
       units: 'QUANTITY',
       percentage: 0,
       account: 0,
+      takeProfit: 0,
     });
 
     expect(calculator.positionSize()).toBe(5);
@@ -54,6 +55,7 @@ describe('PositionSizeCalculator', () => {
       units: 'QUANTITY',
       percentage: 0,
       account: 0,
+      takeProfit: 0,
     });
 
     expect(calculator.isCalculatorValid()).toBe(false);

@@ -20,6 +20,7 @@ const createForm = (
     units: new FormControl(values.units ?? 'QUANTITY', { nonNullable: true }),
     percentage: new FormControl(values.percentage ?? 0, { nonNullable: true }),
     account: new FormControl(values.account ?? 0, { nonNullable: true }),
+    takeProfit: new FormControl(values.takeProfit ?? 0, { nonNullable: true }),
   });
 
 describe('differentEntryAndStopLossValidator', () => {
